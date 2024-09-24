@@ -1,0 +1,2 @@
+# python train.py --data data/cattleface.yaml --weights yolov5n.pt --cfg models/yolov5n_x0125_cattleface.yaml  --img 480 --batch-size 96 --epochs 60 --device 0 
+python train.py --data data/cattleface.yaml --weights "" --cfg models/yolov5-shufflenetv2-stemx0.25_cattleface.yaml  --img 480 --batch-size 96 --epochs 60 --device 0 

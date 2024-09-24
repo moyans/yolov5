@@ -25,30 +25,31 @@ if str(ROOT) not in sys.path:
 if platform.system() != "Windows":
     ROOT = Path(os.path.relpath(ROOT, Path.cwd()))  # relative
 
-from models.common import (
-    C3,
-    C3SPP,
-    C3TR,
-    SPP,
-    SPPF,
-    Bottleneck,
-    BottleneckCSP,
-    C3Ghost,
-    C3x,
-    Classify,
-    Concat,
-    Contract,
-    Conv,
-    CrossConv,
-    DetectMultiBackend,
-    DWConv,
-    DWConvTranspose2d,
-    Expand,
-    Focus,
-    GhostBottleneck,
-    GhostConv,
-    Proto,
-)
+from models.common import  *
+# (
+#     C3,
+#     C3SPP,
+#     C3TR,
+#     SPP,
+#     SPPF,
+#     Bottleneck,
+#     BottleneckCSP,
+#     C3Ghost,
+#     C3x,
+#     Classify,
+#     Concat,
+#     Contract,
+#     Conv,
+#     CrossConv,
+#     DetectMultiBackend,
+#     DWConv,
+#     DWConvTranspose2d,
+#     Expand,
+#     Focus,
+#     GhostBottleneck,
+#     GhostConv,
+#     Proto,
+# )
 from models.experimental import MixConv2d
 from utils.autoanchor import check_anchor_order
 from utils.general import LOGGER, check_version, check_yaml, colorstr, make_divisible, print_args
@@ -420,6 +421,12 @@ def parse_model(d, ch):
             nn.ConvTranspose2d,
             DWConvTranspose2d,
             C3x,
+            ShuffleNetV2_InvertedResidual,
+            StemBlock,
+            conv_bn_relu_maxpool,
+            conv_bn_relu_maxpool,
+            conv_bn_hswish,
+            MobileNetV3_InvertedResidual
         }:
             c1, c2 = ch[f], args[0]
             if c2 != no:  # if not output
@@ -462,7 +469,7 @@ def parse_model(d, ch):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--cfg", type=str, default="yolov5s.yaml", help="model.yaml")
+    parser.add_argument("--cfg", type=str, default="yolov5-shufflenetv2-stemx0.25.yaml", help="model.yaml") # yolov5n_x0125_cattleface  yolov5-shufflenetv2-stem
     parser.add_argument("--batch-size", type=int, default=1, help="total batch size for all GPUs")
     parser.add_argument("--device", default="", help="cuda device, i.e. 0 or 0,1,2,3 or cpu")
     parser.add_argument("--profile", action="store_true", help="profile model speed")

@@ -1,0 +1,8 @@
+train:
+  - /mnt/e/Data/cattle_data/Cattle_Detect_Data240626_0914/yolo/images/trainval
+
+val:
+  - /mnt/e/Data/cattle_data/Cattle_Detect_Data240626_0914/yolo/images/test
+
+nc: 1
+names: ['cattleface']
